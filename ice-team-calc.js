@@ -115,7 +115,7 @@ export class IceTeamCalc extends DDDSuper(I18NMixin(LitElement)) {
       }
 
       .team-name-input input {
-        width: 100%;
+        width: 90%;
         padding: var(--ddd-spacing-3);
         font-size: var(--ddd-font-size-m);
         font-weight: var(--ddd-font-weight-medium);
@@ -142,15 +142,10 @@ export class IceTeamCalc extends DDDSuper(I18NMixin(LitElement)) {
       fieldset {
         border: var(--ddd-border-md);
         border-radius: var(--ddd-radius-sm);
-        padding: var(--ddd-spacing-4);
+        padding: var(--ddd-spacing-1) var(--ddd-spacing-4) var(--ddd-spacing-4);
         margin: var(--ddd-spacing-2) 0;
         background: var(--ddd-theme-default-limestoneLight);
-      }
-
-      legend {
-        padding:  var(--ddd-spacing-2);
-        font-weight: var(--ddd-font-weight-bold);
-        color: var(--ddd-theme-primary);
+        position: relative;
       }
 
       .results-title {
@@ -398,26 +393,25 @@ export class IceTeamCalc extends DDDSuper(I18NMixin(LitElement)) {
   // Lit render the HTML
   render() {
     return html`
-      <h1 class="app-title">🏒 Ice Team Cost Calculator</h1>
-      
-      <div class="container">
-        <div class="input-section">
-          <div class="team-name-input">
+      <h1 class="app-title"> Ice Team Cost Calculator</h1>
+        <div class="team-name-input">
             <label for="team-name">Team Name</label>
             <input 
               id="team-name"
               type="text" 
-              .value="${this.teamName}"
+              value="${this.teamName}"
               @input="${this._handleTeamNameChange}"
               placeholder="Enter your team name"
             />
           </div>
+      <div class="container">
+        <div class="input-section">
+        
 
           <fieldset>
-            <legend>💰 Ice Costs</legend>
             <number-input
               label="Cost of Ice per Hour"
-              .value="${this.costPerHour}"
+              value="${this.costPerHour}"
               prefix="$"
               min="0"
               step="5"
@@ -426,7 +420,7 @@ export class IceTeamCalc extends DDDSuper(I18NMixin(LitElement)) {
             
             <number-input
               label="Number of Hours"
-              .value="${this.hours}"
+              value="${this.hours}"
               suffix="hrs"
               min ="1"
               step ="0.5"
@@ -435,10 +429,9 @@ export class IceTeamCalc extends DDDSuper(I18NMixin(LitElement)) {
           </fieldset>
 
           <fieldset>
-            <legend>👨‍🏫 Coach & Equipment</legend>
             <number-input
               label="Coach Cost (Total)"
-              .value="${this.coachCost}"
+              value="${this.coachCost}"
               prefix="$"
               min="0"
               step="25"
@@ -447,7 +440,7 @@ export class IceTeamCalc extends DDDSuper(I18NMixin(LitElement)) {
             
             <number-input
               label="Cost per Jersey"
-              .value="${this.jerseyCost}"
+              value="${this.jerseyCost}"
               prefix="$"
               min="0"
               step="5"
@@ -456,10 +449,9 @@ export class IceTeamCalc extends DDDSuper(I18NMixin(LitElement)) {
           </fieldset>
 
           <fieldset>
-            <legend>💳 Transaction Fees</legend>
             <number-input
               label="Transaction Fee (%)"
-              .value="${this.transactionFeePercent}"
+              value="${this.transactionFeePercent}"
               suffix="%"
               min="0"
               max="10"
@@ -469,7 +461,7 @@ export class IceTeamCalc extends DDDSuper(I18NMixin(LitElement)) {
             
             <number-input
               label="Fixed Transaction Fee"
-              .value="${this.transactionFeeFixed}"
+              value="${this.transactionFeeFixed}"
               prefix="$"
               min="0"
               step="0.01"
@@ -478,10 +470,9 @@ export class IceTeamCalc extends DDDSuper(I18NMixin(LitElement)) {
           </fieldset>
 
           <fieldset>
-            <legend>👥 Players</legend>
             <number-input
               label="Number of Players"
-              .value="${this.numberOfPlayers}"
+              value="${this.numberOfPlayers}"
               suffix="players"
               min="1"
               max="30"
